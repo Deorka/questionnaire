@@ -1,0 +1,12 @@
+.idea
+
+.pytest_cache
+
+pycache/
+*.pyc
+
+.env
+venv
+
+*.db
+*.sqlite3
