@@ -30,3 +30,36 @@ class QuestionRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Questionnaire.objects.filter(id=self.kwargs.get('pk', None))
+
+
+def list_questionnaire(request):
+    questionnaires = Questionnaire.objects.all()
+    return render(request, 'list_questionnaire.html', {'questionnaire': questionnaires})
+    """
+    Функция отображения для домашней страницы сайта.
+    
+    # Генерация "количеств" некоторых главных объектов
+    num_questionnaire = Questionnaire.objects.all().count()
+    # num_instances = BookInstance.objects.all().count()
+    # Доступные книги (статус = 'a')
+    # num_instances_available = BookInstance.objects.filter(status__exact='a').count()
+
+    num_authors = Author.objects.count()  # The 'all()' is implied by default.
+
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
+    # Render the HTML template index.html with the data in the context variable.
+    return render(
+        request,
+        'index.html',
+        context={'num_books': num_books, 'num_instances': num_instances,
+                 'num_instances_available': num_instances_available, 'num_authors': num_authors,
+                 'num_visits': num_visits},  # num_visits appended
+    )
+    """
+
+
+def index(request):
+    return render(request, 'index.html')
